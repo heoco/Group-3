@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Smart eBook</string>
+
+    <!-- ORC screen start -->
+    <!-- Activity -->
+    <string name="ocr_name">Ocr Scanner</string>
+
+    <!-- ActionBar -->
+    <string name="atnCamera">Camera</string>
+    <string name="atnGallery">Gallery</string>
+    <string name="atnSettings">Settings</string>
+    <!-- Menu -->
+
+    <!-- ORC screen end -->
+</resources>

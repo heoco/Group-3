@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/atnCamera"
+        android:title="@string/atnCamera"
+        android:icon="@drawable/ic_camera"
+        android:orderInCategory="160"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/atnGallery"
+        android:title="@string/atnGallery"
+        android:icon="@drawable/ic_gallery"
+        android:orderInCategory="140"
+        app:showAsAction="always" />
+
+    <item android:id="@+id/atnSettings"
+        android:title="@string/atnSettings"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+</menu>
