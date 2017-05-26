@@ -8,6 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Created by heoco on 11/04/2017.
+ */
+
 public class CustomLanguageAdapter extends BaseAdapter {
     Context context;
     int flags[];

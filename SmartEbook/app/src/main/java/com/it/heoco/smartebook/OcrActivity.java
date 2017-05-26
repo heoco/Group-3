@@ -36,7 +36,7 @@ public class OcrActivity extends AppCompatActivity implements AdapterView.OnItem
 
     private String[] countryNames = {"English", "Vietnam"};
     private int flags[] = {R.drawable.flag_great_britain, R.drawable.flag_vietnam};
-    private String[] tessDatas = {"ori", "vie"};
+    private String[] tessDatas = {"eng", "vie"};
 
     ImageButton ibtnCrop, ibtnAccept;
     ImageView imgPreview;
