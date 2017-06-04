@@ -1,10 +1,9 @@
 package com.it.heoco.smartebook;
 
 import android.graphics.Bitmap;
-import android.os.Environment;
-import android.util.Log;
 
 import com.googlecode.tesseract.android.TessBaseAPI;
+import com.it.heoco.smartebook.activities.MainActivity;
 
 
 /**
@@ -18,7 +17,7 @@ public class OcrManager {
     public OcrManager(String tessData) {
         this.tessData = tessData + ".traineddata";
         this.tessBaseAPI = new TessBaseAPI();
-        String dataPath = OcrApplication.instance.getTessDataParentDirectory();
+        String dataPath = MainActivity.APP_DIRECTORY;
         this.tessBaseAPI.init(dataPath, tessData);
     }
 

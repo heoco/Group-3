@@ -5,18 +5,18 @@
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.it.heoco.smartebook.MainActivity">
+    tools:context="com.it.heoco.smartebook.activities.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFCC99">
+        android:background="@drawable/background">
 
         <LinearLayout
             android:id="@+id/bookLayout"
-            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:padding="10dip">
         </LinearLayout>
     </ScrollView>

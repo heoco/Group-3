@@ -6,6 +6,9 @@
     <string name="ocr_name">Ocr Scanner</string>
 
     <!-- ActionBar -->
+    <color name="titlebackgroundcolor">#3232CD</color>
+    <color name="titletextcolor">#FFFF00</color>
+    <string name="atnLanguage">Language</string>
     <string name="atnCamera">Camera</string>
     <string name="atnGallery">Gallery</string>
     <string name="atnSettings">Settings</string>

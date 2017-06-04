@@ -12,9 +12,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name=".OcrApplication">
+        android:name=".MainApplication">
         <!-- This activity is the main entry, should appear in app launcher -->
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,10 +22,8 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".OcrActivity"
-            android:label="@string/ocr_name">
-        </activity>
+        <activity android:name=".activities.OcrActivity"
+            android:theme="@style/AppTheme.Base"/>
     </application>
 
 </manifest>

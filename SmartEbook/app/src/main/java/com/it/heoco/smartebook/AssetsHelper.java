@@ -1,6 +1,8 @@
 package com.it.heoco.smartebook;
 
+import android.annotation.TargetApi;
 import android.content.res.AssetManager;
+import android.os.Build;
 import android.util.Log;
 
 import java.io.File;
@@ -14,42 +16,39 @@ import java.io.OutputStream;
  */
 
 public class AssetsHelper {
-    private String TAG;
-
-    public AssetsHelper(String TAG) {
-        this.TAG = TAG;
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
+    public static boolean copyAssets(String LOG_TAG, AssetManager assetManager,
+                                     File targetFolder) throws Exception {
+        Log.i(LOG_TAG, "Copying files from assets to folder " + targetFolder);
+        return copyAssets(assetManager, "", targetFolder);
     }
 
-    public void copyAssets(AssetManager assetManager, File targetFolder) {
-        Log.i(TAG, "Copying files from assets to folder " + targetFolder);
-        if (!targetFolder.exists()) {
-            targetFolder.mkdir();
-        }
-
-        try {
-            String sources[] = assetManager.list(targetFolder.getName());
-            if (sources == null || sources.length == 0) {
-                throw new IOException();
+    public static boolean copyAssets(AssetManager assetManager, String path,
+                                     File targetFolder) throws Exception {
+        String sources[] = assetManager.list(path);
+        if (sources.length == 0) { // its not a folder, so its a file:
+            copyAssetFileToFolder(assetManager, path, targetFolder);
+        } else { // its a folder:
+            if (path.startsWith("images") || path.startsWith("sounds") || path.startsWith("webkit")) {
+                return false;
             }
+            File targetDir = new File(targetFolder, path);
+            targetDir.mkdirs();
             for (String source : sources) {
-                String fullSourcePath = targetFolder + File.separator + source;
-                File targetDir = new File(targetFolder, source);
-                if (!targetDir.exists()) {
-                    targetDir.mkdir();
-                }
-                InputStream in = assetManager.open(fullSourcePath);
-                OutputStream out = new FileOutputStream(targetDir.getPath());
-                copyAssetFileToFolder(in, out);
+                String fullSourcePath = path.equals("") ? source : (path + File.separator + source);
+                copyAssets(assetManager, fullSourcePath, targetFolder);
             }
-        } catch (Exception e) {
-            Log.i(TAG, e.getMessage());
         }
+        return true;
     }
 
-    private static void copyAssetFileToFolder(InputStream in, OutputStream out) throws IOException {
-        byte[] buffer = new byte[1024];
+    private static void copyAssetFileToFolder(AssetManager assetManager,
+                                              String fullAssetPath, File targetBasePath) throws IOException {
+        InputStream in = assetManager.open(fullAssetPath);
+        OutputStream out = new FileOutputStream(new File(targetBasePath, fullAssetPath));
+        byte[] buffer = new byte[16 * 1024];
         int read;
-        while((read = in.read(buffer)) != -1){
+        while ((read = in.read(buffer)) != -1) {
             out.write(buffer, 0, read);
         }
         in.close();

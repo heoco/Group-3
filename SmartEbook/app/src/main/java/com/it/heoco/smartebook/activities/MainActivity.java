@@ -1,22 +1,24 @@
-package com.it.heoco.smartebook;
+package com.it.heoco.smartebook.activities;
 
 import android.content.Intent;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+
+import com.it.heoco.smartebook.MainApplication;
+import com.it.heoco.smartebook.R;
 
 public class MainActivity extends AppCompatActivity {
-    FloatingActionButton fabAdd, fabDocuments, fabOcr;
-    CoordinatorLayout moreLayout;
-    boolean fabClick;
+    public static final String APP_DIRECTORY = MainApplication.instance.getAppDirectory();
     private static final int DCM_REQUEST = 1,
             OCR_REQUEST = 2;
+
+    FloatingActionButton fabAdd, fabDocuments, fabOcr;
+    CoordinatorLayout moreLayout;
+    boolean fabState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +35,12 @@ public class MainActivity extends AppCompatActivity {
         fabOcr = (FloatingActionButton) findViewById(R.id.fabOcr);
         moreLayout = (CoordinatorLayout) findViewById(R.id.moreLayout);
 
-        fabClick = true;
+        fabState = true;
         fabAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moreLayout.setVisibility(fabClick ? View.VISIBLE : View.GONE);
-                fabClick = !fabClick;
+                moreLayout.setVisibility(fabState ? View.VISIBLE : View.GONE);
+                fabState = !fabState;
             }
         });
 
